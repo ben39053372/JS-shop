@@ -1,13 +1,17 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
-import React, { useState } from 'react'
+import Head from "next/head";
+import styles from "../styles/Home.module.css";
+import React, { useState } from "react";
 
-import { Carousel, Container, Row, Col } from 'react-bootstrap'
-import Image from 'next/image'
+import { Carousel, Container, Row, Col } from "react-bootstrap";
+import Image from "next/image";
+
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 export default function Home() {
+  const [index, setIndex] = useState(0);
 
-  const [index, setIndex] = useState(0)
+  const { t } = useTranslation("common");
 
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
@@ -17,24 +21,24 @@ export default function Home() {
     {
       image: "http://nailnail.shop/img/banner/6.png",
       caption1: "First slide label",
-      caption2: "Nulla vitae elit libero, a pharetra augue mollis interdum."
+      caption2: "Nulla vitae elit libero, a pharetra augue mollis interdum.",
     },
     {
       image: "http://nailnail.shop/img/banner/6.png",
       caption1: "2 slide label",
-      caption2: "Nulla vitae elit libero, a pharetra augue mollis interdum."
+      caption2: "Nulla vitae elit libero, a pharetra augue mollis interdum.",
     },
     {
       image: "http://nailnail.shop/img/banner/6.png",
       caption1: "3 slide label",
-      caption2: "Nulla vitae elit libero, a pharetra augue mollis interdum."
+      caption2: "Nulla vitae elit libero, a pharetra augue mollis interdum.",
     },
     {
       image: "http://nailnail.shop/img/banner/6.png",
       caption1: "4 slide label",
-      caption2: "Nulla vitae elit libero, a pharetra augue mollis interdum."
+      caption2: "Nulla vitae elit libero, a pharetra augue mollis interdum.",
     },
-  ]
+  ];
 
   return (
     <div>
@@ -44,8 +48,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Carousel activeIndex={index} onSelect={handleSelect} interval={6000} >
-
+      <Carousel activeIndex={index} onSelect={handleSelect} interval={6000}>
         {items.map((item, index) => {
           return (
             <Carousel.Item key={index}>
@@ -62,18 +65,40 @@ export default function Home() {
                 <p>{item.caption2}</p>
               </Carousel.Caption>
             </Carousel.Item>
-          )
+          );
         })}
       </Carousel>
 
-      <Container fluid="sm">
+      <Container>
         <Row>
-          <Col><div>context</div></Col>
-          <Col><div>image</div></Col>
+          <Col>
+            <div>
+              <h4>Order Online</h4>
+              <p>Free Shipping on Order Over $100</p>
+            </div>
+          </Col>
 
+          <Col>
+            <div>
+              <h4>Worldwide Shipping</h4>
+              <p>24/7 h Customer Support</p>
+            </div>
+          </Col>
+
+          <Col>
+            <div>
+              <h4>Payment System</h4>
+              <p>24/7 h Customer Support</p>
+            </div>
+          </Col>
         </Row>
       </Container>
-
     </div>
-  )
+  );
 }
+
+export const getStaticProps = async ({ locale }) => ({
+  props: {
+    ...(await serverSideTranslations(locale, ["common"])),
+  },
+});

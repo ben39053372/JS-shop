@@ -2,8 +2,13 @@ import '../styles/globals.css'
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import { Navbar, Container, Nav } from 'react-bootstrap'
+import { BsSearch, BsFillPersonFill, BsBagFill } from 'react-icons/bs'
+
+import { appWithTranslation, useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 function MyApp({ Component, pageProps }) {
+  const { t } = useTranslation("common")
   return (
     <>
       <Navbar expand="lg" variant="light" bg="light">
@@ -12,28 +17,27 @@ function MyApp({ Component, pageProps }) {
           <Navbar.Toggle aria-controls="responsive-navbar-nav"></Navbar.Toggle>
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto">
-              <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="/about">Abouts</Nav.Link>
+              <Nav.Link href="/">{t('home')}</Nav.Link>
+              <Nav.Link href="/about">{t('about')}</Nav.Link>
               <Nav.Link href="/products">Products</Nav.Link>
               <Nav.Link href="/kits">Kits</Nav.Link>
               <Nav.Link href="/news">News</Nav.Link>
               <Nav.Link href="/contact">Contact</Nav.Link>
             </Nav>
-            <Nav>
-              <Navbar.Text>
-                usd
-              </Navbar.Text>
-              <Navbar.Text>
-                icon 1
-              </Navbar.Text>
-              <Navbar.Text>
-                icon 2
-              </Navbar.Text>
-              <Navbar.Text>
-                icon 3
-              </Navbar.Text>
-            </Nav>
           </Navbar.Collapse>
+
+          <div className="mx-2">
+            USD
+          </div>
+          <div className="mx-2">
+            <BsSearch />
+          </div>
+          <div className="mx-2">
+            <BsFillPersonFill />
+          </div>
+          <div className="mx-2">
+            <BsBagFill />
+          </div>
         </Container>
       </Navbar>
       <Component {...pageProps} />
@@ -41,4 +45,10 @@ function MyApp({ Component, pageProps }) {
   )
 }
 
-export default MyApp
+export const getStaticProps = async ({ locale }) => ({
+  props: {
+    ...await serverSideTranslations(locale, ['common']),
+  }
+})
+
+export default appWithTranslation(MyApp)
