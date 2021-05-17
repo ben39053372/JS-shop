@@ -1,5 +1,10 @@
 {
   "home": "首頁",
-  "about_us": "關於我們",
-  "image": "圖片"
+  "about": "關於我們",
+  "image": "圖片",
+  "products": "產品",
+  "shop_name": "我的商店",
+  "kits": "套裝",
+  "news": "最新消息",
+  "contact": "聯絡方式"
 }
