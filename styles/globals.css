@@ -14,3 +14,20 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.home_feature {
+  padding: 20px 0;
+}
+
+.home_feature > * {
+  text-align: center;
+}
+
+.center {
+  text-align: center;
+  justify-content: center;
+}
+
+.home_feature p {
+  margin: 0.5rem 0;
+}
