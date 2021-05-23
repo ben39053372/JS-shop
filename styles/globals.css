@@ -28,6 +28,14 @@ a {
   justify-content: center;
 }
 
+.textAlignContainer {
+  text-align: center;
+}
+
+a:hover {
+  color: #ffff00;
+}
+
 .home_feature p {
   margin: 0.5rem 0;
 }

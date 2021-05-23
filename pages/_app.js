@@ -1,5 +1,5 @@
-import "../styles/globals.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "../styles/globals.css";
 
 import { appWithTranslation } from "next-i18next";
 import { Header } from "../components/Header";
