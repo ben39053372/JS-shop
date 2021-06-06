@@ -1,13 +1,13 @@
 import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { ProductCard } from "./ProductCard";
+import { BlogCard } from "./BlogCard";
 
 const responsive = {
   superLargeDesktop: {
     // the naming can be any, depends on you.
     breakpoint: { max: 4000, min: 1024 },
-    items: 4,
+    items: 3,
   },
   desktop: {
     breakpoint: { max: 1024, min: 801 },
@@ -23,19 +23,19 @@ const responsive = {
   },
 };
 
-export const MulitProductCarousel = () => {
+export const MulitBlogCarousel = () => {
   return (
     <Carousel responsive={responsive}>
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
+      <BlogCard />
+      <BlogCard />
+      <BlogCard />
+      <BlogCard />
+      <BlogCard />
+      <BlogCard />
+      <BlogCard />
+      <BlogCard />
+      <BlogCard />
+      <BlogCard />
     </Carousel>
   );
 };

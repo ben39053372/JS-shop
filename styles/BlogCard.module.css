@@ -1,0 +1,33 @@
+.productCard {
+  padding: 10px;
+}
+
+.productCard > div:first-child {
+  padding: 10px;
+  border-radius: 3%;
+  border: 1px solid #ddd;
+}
+
+.productCard > div:first-child:hover {
+  box-shadow: 0 4px 10px #999;
+  transition: all 0.3s ease 0s;
+}
+
+.hoverItem {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 5px 10px #999;
+  animation-name: top2Center;
+  animation-duration: 0.5s;
+}
+
+@keyframes top2Center {
+  from {
+    top: 40%;
+  }
+  to {
+    top: 50%;
+  }
+}
