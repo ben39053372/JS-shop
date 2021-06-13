@@ -220,6 +220,45 @@ export default function Home() {
         </Row>
       </Container>
 
+      <Row>
+        <Col>
+          {/* <div style={{ width: 100, height: 100, background: "#09c" }}></div>
+           */}
+
+          <Image
+            src="/image/cbd_oil.png"
+            layout="intrinsic"
+            width={400}
+            height={400}
+          />
+        </Col>
+        <Col>
+          <div className="center">
+            <h3>Special Offers for Subscription</h3>
+            <h1>GET INSTANT DISCOUNT FOR MEMBERSHIP</h1>
+            <div
+              style={{
+                display: "flex",
+                borderRadius: 15,
+                width: "100%",
+              }}
+            >
+              <input style={{ outline: "none" }} />
+              <Button style={{ borderRadius: 15 }}>submit</Button>
+            </div>
+          </div>
+        </Col>
+        <Col>
+          {/* <div style={{ width: 100, height: 100, background: "#09c" }}></div> */}
+          <Image
+            src="/image/people.png"
+            width={400}
+            height={400}
+            layout="intrinsic"
+          />
+        </Col>
+      </Row>
+
       <Container>
         <div className="center">
           <h1>Latest Blog</h1>

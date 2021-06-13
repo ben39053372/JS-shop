@@ -10,11 +10,11 @@ const data = {
   },
   2017: {
     image: "/image/home_right.jpg",
-    p: "We provide the best Beard oil all over the world. We are the worldd best store for Beard Oil. You can buy our product without any hegitation because we always consus about our product quality and always maintain it properly so your can trust and this is our main goal we belive that... Some of our customer say’s that they trust us and buy our product without any hagitation because they belive us and always happy",
+    p: "We eard oil all over the world. We are the worldd best store for Beard Oil. You can buy our product without any hegitation because we always consus about our product quality and always maintain it properly so your can trust and this is our main goal we belive that... Some of our customer say’s that they trust us and buy our product without any hagitation because they belive us and always happy",
   },
   2018: {
     image: "/image/leftTop.png",
-    p: "We provide the best Beard oil all over the world. We are the worldd best store for Beard Oil. You can buy our product without any hegitation because we always consus about our product quality and always maintain it properly so your can trust and this is our main goal we belive that... Some of our customer say’s that they trust us and buy our product without any hagitation because they belive us and always happy",
+    p: "We provide the best Beare the worldd best store for Beard Oil. You can buy our product without any hegitation because we always consus about our product quality and always maintain it properly so your can trust and this is our main goal we belive that... Some of our customer say’s that they trust us and buy our product without any hagitation because they belive us and always happy",
   },
   2019: {
     image: "/image/rightDown.png",
@@ -27,6 +27,7 @@ const data = {
 };
 
 export default function About() {
+  console.log(Object.keys(data));
   const [year, setYear] = useState(Object.keys(data)[0]);
   return (
     <div>
@@ -46,7 +47,11 @@ export default function About() {
               }}
             >
               <h1 style={{ color: "#fff" }}>About Us</h1>
-              {"Home > About Us"}
+              {/* {"Home > About Us"} */}
+              <div>
+                <a href="/">Home</a>
+                {">"} About Us
+              </div>
             </Col>
             <Col
               style={{
@@ -92,6 +97,7 @@ export default function About() {
           </Col>
         </Row>
       </Container>
+
       <Container style={{ margin: "50px auto" }}>
         <iframe
           width="100%"
@@ -103,35 +109,37 @@ export default function About() {
           allowFullScreen
         ></iframe>
       </Container>
+
       <div style={{ background: "#ddd" }}>
         <Container style={{ padding: 50 }}>
           <Row>
-            <>
-              <Col xs={4}>
-                <h3>{year}</h3>
-                <p>{data[year].p}</p>
-              </Col>
-              <Col xs={6} style={{ display: "flex", flex: 1 }}>
-                <img src={data[year].image} st style={{ flex: 1 }} />
-              </Col>
-            </>
+            <Col xs={4}>
+              <h3>{year}</h3>
+              <p>{data[year].p}</p>
+            </Col>
+            <Col xs={6} style={{ display: "flex", flex: 1 }}>
+              <img src={data[year].image} style={{ width: 380, height: 346 }} />
+            </Col>
 
             <Col xs={2}>
               <ul style={{ listStyleType: "none" }}>
-                {Object.keys(data).map((y) => (
-                  <li
-                    style={{
-                      color: year === y ? "#09c" : "#000",
-                      fontWeight: "bold",
-                      paddingTop: 10,
-                      paddingBottom: 10,
-                      fontSize: 20,
-                    }}
-                    onClick={() => setYear(y)}
-                  >
-                    - {y}
-                  </li>
-                ))}
+                {Object.keys(data).map((y) => {
+                  console.log("y:", y);
+                  return (
+                    <li
+                      style={{
+                        color: year === y ? "#09c" : "#000",
+                        fontWeight: "bold",
+                        paddingTop: 10,
+                        paddingBottom: 10,
+                        fontSize: 20,
+                      }}
+                      onClick={() => setYear(y)}
+                    >
+                      - {y}
+                    </li>
+                  );
+                })}
               </ul>
             </Col>
           </Row>

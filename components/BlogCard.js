@@ -1,11 +1,7 @@
-import React, { useState } from "react";
-import styles from "../styles/BlogCard.module.css";
-import { ButtonGroup, Button, Card } from "react-bootstrap";
-import Image from "next/image";
-import { FaApple } from "react-icons/fa";
+import React from "react";
+import { Button, Card } from "react-bootstrap";
 
 export const BlogCard = () => {
-  const [isHover, setIsHover] = useState(false);
   return (
     <Card style={{ margin: "0 20px" }}>
       <Card.Img variant="top" src="/image/blog1.jpg" />
