@@ -4,7 +4,7 @@ import { ButtonGroup, Button } from "react-bootstrap";
 import Image from "next/image";
 import { FaApple } from "react-icons/fa";
 
-export const ProductCard = () => {
+export const ProductCard = (props) => {
   const [isHover, setIsHover] = useState(false);
   return (
     <div
@@ -14,7 +14,7 @@ export const ProductCard = () => {
     >
       <div style={{ position: "relative" }}>
         <Image
-          src="/image/product1.png"
+          src={props.src || "/image/product1.png"}
           layout="responsive"
           width="600"
           height="700"
@@ -31,7 +31,7 @@ export const ProductCard = () => {
         <div className="textAlignContainer">
           <p>star</p>
           <a>
-            <h3>Product Name</h3>
+            <h3>{props.name || "Product Name"}</h3>
           </a>
           <div style={{ flexDirection: "row" }}>
             <span>price/</span>

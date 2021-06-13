@@ -1,5 +1,6 @@
 import Head from "next/head";
 import React, { useState } from "react";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 import { Container, Row, Col, Image, Button } from "react-bootstrap";
 
@@ -104,7 +105,7 @@ export default function About() {
           height="700"
           src="https://www.youtube.com/embed/qu5PxhEUMfU"
           title="YouTube video player"
-          frameborder="0"
+          frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
         ></iframe>
@@ -114,8 +115,17 @@ export default function About() {
         <Container style={{ padding: 50 }}>
           <Row>
             <Col xs={4}>
-              <h3>{year}</h3>
-              <p>{data[year].p}</p>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignContent: "center",
+                }}
+              >
+                <h3>{year}</h3>
+                <p>{data[year].p}</p>
+              </div>
             </Col>
             <Col xs={6} style={{ display: "flex", flex: 1 }}>
               <img src={data[year].image} style={{ width: 380, height: 346 }} />
@@ -123,10 +133,11 @@ export default function About() {
 
             <Col xs={2}>
               <ul style={{ listStyleType: "none" }}>
-                {Object.keys(data).map((y) => {
+                {Object.keys(data).map((y, i) => {
                   console.log("y:", y);
                   return (
                     <li
+                      key={i}
                       style={{
                         color: year === y ? "#09c" : "#000",
                         fontWeight: "bold",
@@ -234,3 +245,9 @@ export default function About() {
     </div>
   );
 }
+
+export const getStaticProps = async ({ locale }) => ({
+  props: {
+    ...(await serverSideTranslations(locale, ["common"])),
+  },
+});
